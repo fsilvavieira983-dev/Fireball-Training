@@ -1,40 +1,140 @@
-local v2=Players.LocalPlayer:WaitForChild("PlayerGui")
-local v3=Instance.new("ScreenGui")
-v3.Name="Autofarm"
-v3.Parent=v1
-v3.ResetOnSpawn=false
-local v4=Instance.new("Frame")
-v4.Size=UDim2.new(0,350,0,350)
-v4.Position=UDim2.new(0.5,-175,0.5,-175)
-v4.BackgroundColor3=Color3.new(0.1,0.1,0.1)
-v4.BorderSizePixel=2
-v4.BorderColor3=Color3.new(0.7,0,0)
-v4.Parent=v3
-v4.Active=true
-v4.Draggable=true
-local v5=Instance.new("TextLabel")
-v5.Size=UDim2.new(1,0,0,40)
-v5.Position=UDim2.new(0,0,0,0)
-v5.BackgroundColor3=Color3.new(0.5,0,0)
-v5.Text="Fireball Training"
-v5.TextColor3=Color3.new(1,1,1)
-v5.TextScaled=true
-v5.Font=Enum.Font.GothamBold
-v5.Parent=v4
-v6.Size=UDim2.new(0,30,0,30)
-v6.Position=UDim2.new(1,-35,0,5)
-v6.BackgroundColor3=Color3.new(0.5,0,0)
-v6.Text="X"
-v6.TextColor3=Color3.new(1,1,1)
-v6.TextScaled=true
-v6.Font=Enum.Font.GothamBold
-local v7=v6.MouseButton1Click:Connect(function()
-	local v18=v3:Destroy()
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+local toggles = {
+    ["Infinite Spins"] = false,
+    ["OP Get Power"] = false,
+    ["x5 Boost"] = false,
+    ["Train Auto Clicker"] = false
+}
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "Autofarm"
+screenGui.Parent = playerGui
+screenGui.ResetOnSpawn = false
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 350, 0, 350)
+mainFrame.Position = UDim2.new(0.5, -175, 0.5, -175)
+mainFrame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+mainFrame.BorderSizePixel = 2
+mainFrame.BorderColor3 = Color3.new(0.7, 0, 0)
+mainFrame.Parent = screenGui
+mainFrame.Active = true
+mainFrame.Draggable = true
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 40)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.BackgroundColor3 = Color3.new(0.5, 0, 0)
+title.Text = "Fireball Training"
+title.TextColor3 = Color3.new(1,1,1)
+title.TextScaled = true
+title.Font = Enum.Font.GothamBold
+title.Parent = mainFrame
+local closeBtn = Instance.new("TextButton")
+closeBtn.Size = UDim2.new(0, 30, 0, 30)
+closeBtn.Position = UDim2.new(1, -35, 0, 5)
+closeBtn.BackgroundColor3 = Color3.new(0.5, 0, 0)
+closeBtn.Text = "X"
+closeBtn.TextColor3 = Color3.new(1,1,1)
+closeBtn.TextScaled = true
+closeBtn.Font = Enum.Font.GothamBold
+closeBtn.Parent = mainFrame
+closeBtn.MouseButton1Click:Connect(function()
+    screenGui:Destroy()
 end)
-v8.Name="x5 Boost"
-v8.Position=UDim2.new(0.05,0,0,60)
-v8.Text="x5 Boost [INATIVO \xe2\x9d\x8c]"
-v8.TextColor3=Color3.new(1,1,1)
+local yPos = 60
+for scriptName, _ in pairs(toggles) do
+    local btn = Instance.new("TextButton")
+    btn.Name = scriptName
+    btn.Size = UDim2.new(0.9, 0, 0, 45)
+    btn.Position = UDim2.new(0.05, 0, 0, yPos)
+    btn.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+    btn.Text = scriptName .. " [INATIVO ❌]"
+    btn.TextColor3 = Color3.new(1,1,1)
+    btn.TextScaled = true
+    btn.Font = Enum.Font.Gotham
+    btn.Parent = mainFrame
+    
+    btn.MouseButton1Click:Connect(function()
+        toggles[scriptName] = not toggles[scriptName]
+        btn.Text = scriptName .. " [" .. (toggles[scriptName] and "ATIVO ✅" or "INATIVO ❌") .. "]"
+        btn.BackgroundColor3 = toggles[scriptName] and Color3.new(0.7, 0, 0) or Color3.new(0.3, 0.3, 0.3)
+    end)
+    yPos = yPos + 55
+end
+local claimBtn = Instance.new("TextButton")
+claimBtn.Name = "ClaimAllDaily"
+claimBtn.Size = UDim2.new(0.9, 0, 0, 45)
+claimBtn.Position = UDim2.new(0.05, 0, 0, yPos)
+claimBtn.BackgroundColor3 = Color3.new(0.7, 0.2, 0.2)
+claimBtn.Text = "Claim All Daily Rewards (21/21) 🎁"
+claimBtn.TextColor3 = Color3.new(1,1,1)
+claimBtn.TextScaled = true
+claimBtn.Font = Enum.Font.GothamBold
+claimBtn.Parent = mainFrame
+claimBtn.MouseButton1Click:Connect(function()
+    pcall(function()
+        claimBtn.Text = "Claiming... (21/21)"
+        claimBtn.BackgroundColor3 = Color3.new(0.6, 0.6, 0)
+        
+        
+        for i = 1, 21 do
+            game:GetService("ReplicatedStorage"):WaitForChild("DailyEvents"):WaitForChild("ClaimDaily"):FireServer()
+            claimBtn.Text = string.format("Claiming... (%d/21)", i)
+            task.wait(0.05)
+        end
+        
+        claimBtn.Text = "Claimed All! ✅"
+        claimBtn.BackgroundColor3 = Color3.new(0.8, 0, 0)
+        task.wait(0.2)
+        claimBtn.Text = "Claim All Daily Rewards (21/21) 🎁"
+        claimBtn.BackgroundColor3 = Color3.new(0.7, 0.2, 0.2)
+    end)
+end)
+spawn(function()
+    while screenGui.Parent do
+        
+        if toggles["Infinite Spins"] then
+            pcall(function()
+                local args = {"Spins", 1}
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AddWheelSpinValue"):FireServer(unpack(args))
+            end)
+        end
+        
+        
+        if toggles["OP Get Power"] then
+            pcall(function()
+                local args = {
+                    "Power",
+                    10000000000  
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AddWheelSpinValue"):FireServer(unpack(args))
+            end)
+        end
+        
+        if toggles["x5 Boost"] then
+            pcall(function()
+                local args = {
+                    "x5 Power",
+                    30  
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AddWheelSpinValue"):FireServer(unpack(args))
+            end)
+        end
+        
+        
+        if toggles["Train Auto Clicker"] then
+            pcall(function()
+                local character = Players.LocalPlayer.Character
+                if character and character:FindFirstChild("Train") and character.Train:FindFirstChild("Event") then
+                    character.Train.Event:FireServer()
+                end
+            end)
+        end
+        
+        task.wait(0.000000000000000000000001)
+    end
+end)
+print("🔥 Fireball Training Hub")v8.TextColor3=Color3.new(1,1,1)
 v8.TextScaled=true
 v8.Font=Enum.Font.Gotham
 local v9=v8.MouseButton1Click:Connect(function()
