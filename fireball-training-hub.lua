@@ -7,6 +7,7 @@ local playerGui = player:WaitForChild("PlayerGui")
 local toggles = {
     ["Infinite Spins"] = false,
     ["OP Get Power"] = false,
+    ["x5 Boost"] = false,
     ["Op Auto Clicker"] = false
 }
 
@@ -17,8 +18,8 @@ screenGui.Parent = playerGui
 screenGui.ResetOnSpawn = false
 
 local mainFrame = Instance.new("Frame")
-mainFrame.Size = UDim2.new(0, 350, 0, 300)
-mainFrame.Position = UDim2.new(0.5, -175, 0.5, -150)
+mainFrame.Size = UDim2.new(0, 350, 0, 350) -- Aumentei altura
+mainFrame.Position = UDim2.new(0.5, -175, 0.5, -175)
 mainFrame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
 mainFrame.BorderSizePixel = 2
 mainFrame.BorderColor3 = Color3.new(0, 0.7, 0)
@@ -32,7 +33,7 @@ local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 0, 40)
 title.Position = UDim2.new(0, 0, 0, 0)
 title.BackgroundColor3 = Color3.new(0, 0.5, 0)
-title.Text = "🔥 Fireball Training"
+title.Text = "🔥 Fireball Training Hub"
 title.TextColor3 = Color3.new(1,1,1)
 title.TextScaled = true
 title.Font = Enum.Font.GothamBold
@@ -128,6 +129,17 @@ spawn(function()
                 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AddWheelSpinValue"):FireServer(unpack(args))
             end)
         end
+
+        -- x5 BOOST (NOVO!)
+        if toggles["x5 Boost"] then
+            pcall(function()
+                local args = {
+                    "x5 Power",
+                    30  -- 30 minutos de boost
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AddWheelSpinValue"):FireServer(unpack(args))
+            end)
+        end
         
         -- Train Auto Clicker
         if toggles["Op Auto Clicker"] then
@@ -139,8 +151,8 @@ spawn(function()
             end)
         end
         
-        task.wait(0.000000000000000001)
+        task.wait(0.1)  -- Delay um pouco maior para não crashar
     end
 end)
 
-print("🔥 Fireball Training Hub!")
+print("🔥 Fireball Training Hub - x5 Boost ADICIONADO!")
