@@ -1,9 +1,8 @@
--- Fireball Training Hub
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- Status dos scripts (false = inativo)
+
 local toggles = {
     ["Infinite Spins"] = false,
     ["OP Get Power"] = false,
@@ -11,21 +10,21 @@ local toggles = {
     ["Op Auto Clicker"] = false
 }
 
--- Criar GUI
+
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "Autofarm"
 screenGui.Parent = playerGui
 screenGui.ResetOnSpawn = false
 
 local mainFrame = Instance.new("Frame")
-mainFrame.Size = UDim2.new(0, 350, 0, 350) -- Aumentei altura
+mainFrame.Size = UDim2.new(0, 350, 0, 350)
 mainFrame.Position = UDim2.new(0.5, -175, 0.5, -175)
 mainFrame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
 mainFrame.BorderSizePixel = 2
 mainFrame.BorderColor3 = Color3.new(0, 0.7, 0)
 mainFrame.Parent = screenGui
 
--- deixar arrastável
+
 mainFrame.Active = true
 mainFrame.Draggable = true
 
@@ -39,7 +38,7 @@ title.TextScaled = true
 title.Font = Enum.Font.GothamBold
 title.Parent = mainFrame
 
--- Botão X para fechar tudo
+
 local closeBtn = Instance.new("TextButton")
 closeBtn.Size = UDim2.new(0, 30, 0, 30)
 closeBtn.Position = UDim2.new(1, -35, 0, 5)
@@ -54,7 +53,7 @@ closeBtn.MouseButton1Click:Connect(function()
     screenGui:Destroy()
 end)
 
--- Botões de Toggle
+
 local yPos = 60
 for scriptName, _ in pairs(toggles) do
     local btn = Instance.new("TextButton")
@@ -76,7 +75,7 @@ for scriptName, _ in pairs(toggles) do
     yPos = yPos + 55
 end
 
--- Botão Claim All Daily Rewards (AGORA 21/21 - executa 21 vezes)
+
 local claimBtn = Instance.new("TextButton")
 claimBtn.Name = "ClaimAllDaily"
 claimBtn.Size = UDim2.new(0.9, 0, 0, 45)
@@ -93,7 +92,7 @@ claimBtn.MouseButton1Click:Connect(function()
         claimBtn.Text = "Claiming... (21/21)"
         claimBtn.BackgroundColor3 = Color3.new(0.6, 0.6, 0)
         
-        -- Executa 21 vezes com pequenos delays
+        
         for i = 1, 21 do
             game:GetService("ReplicatedStorage"):WaitForChild("DailyEvents"):WaitForChild("ClaimDaily"):FireServer()
             claimBtn.Text = string.format("Claiming... (%d/21)", i)
@@ -108,10 +107,10 @@ claimBtn.MouseButton1Click:Connect(function()
     end)
 end)
 
--- Loop Principal
+
 spawn(function()
     while screenGui.Parent do
-        -- Infinite Spins
+        
         if toggles["Infinite Spins"] then
             pcall(function()
                 local args = {"Spins", 1}
@@ -119,29 +118,29 @@ spawn(function()
             end)
         end
         
-        -- OP Get Power
+        
         if toggles["OP Get Power"] then
             pcall(function()
                 local args = {
                     "Power",
-                    10000000000  -- 10 bilhões
+                    10000000000  
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AddWheelSpinValue"):FireServer(unpack(args))
             end)
         end
 
-        -- x5 BOOST (NOVO!)
+        
         if toggles["x5 Boost"] then
             pcall(function()
                 local args = {
                     "x5 Power",
-                    30  -- 30 minutos de boost
+                    30  
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AddWheelSpinValue"):FireServer(unpack(args))
             end)
         end
         
-        -- Train Auto Clicker
+        
         if toggles["Op Auto Clicker"] then
             pcall(function()
                 local character = Players.LocalPlayer.Character
@@ -151,8 +150,8 @@ spawn(function()
             end)
         end
         
-        task.wait(0.1)  -- Delay um pouco maior para não crashar
+        task.wait(0.000000000000000000000001)
     end
 end)
 
-print("🔥 Fireball Training Hub - x5 Boost ADICIONADO!")
+print("🔥 Fireball Training Hub")
