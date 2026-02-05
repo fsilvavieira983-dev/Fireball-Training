@@ -7,7 +7,7 @@ local toggles = {
     ["Infinite Spins"] = false,
     ["OP Get Power"] = false,
     ["x5 Boost"] = false,
-    ["Op Auto Clicker"] = false
+    ["Train Auto Clicker"] = false
 }
 
 
@@ -141,7 +141,7 @@ spawn(function()
         end
         
         
-        if toggles["Op Auto Clicker"] then
+        if toggles["Train Auto Clicker"] then
             pcall(function()
                 local character = Players.LocalPlayer.Character
                 if character and character:FindFirstChild("Train") and character.Train:FindFirstChild("Event") then
