@@ -134,31 +134,4 @@ spawn(function()
         task.wait(0.000000000000000000000001)
     end
 end)
-print("🔥 Fireball Training Hub")v8.TextColor3=Color3.new(1,1,1)
-v8.TextScaled=true
-v8.Font=Enum.Font.Gotham
-local v9=v8.MouseButton1Click:Connect(function()
-	-- callback had no traced operations
-end)
-v10.Name="OP Get Power"
-v10.Position=UDim2.new(0.05,0,0,115)
-v10.Font=Enum.Font.Gotham
-local v11=v10.MouseButton1Click:Connect(function()
-	-- callback had no traced operations
-end)
-v16.Font=Enum.Font.GothamBold
-spawn(function()
-	local v128=v126:FireServer("Spins",1)
-	local v133=v131:FireServer("Power",10000000000)
-	local v140=Players.LocalPlayer.Character:FindFirstChild("Train")
-	local v142=Players.LocalPlayer.Character.Train:FindFirstChild("Event")
-	local v143=Players.LocalPlayer.Character.Train.Event:FireServer()
-	task.wait(1e-24)
-	local v160=Players.LocalPlayer.Character:FindFirstChild("Train")
-	local v162=Players.LocalPlayer.Character.Train:FindFirstChild("Event")
-	local v163=Players.LocalPlayer.Character.Train.Event:FireServer()
-	task.wait(1e-24)
-	-- execution limit reached
-	-- callback timeout
-end)
-print("\xf0\x9f\x94\xa5 Fireball Training Hub")
+print("🔥 Fireball Training Hub")
