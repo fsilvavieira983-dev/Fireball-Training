@@ -21,7 +21,7 @@ mainFrame.Size = UDim2.new(0, 350, 0, 350)
 mainFrame.Position = UDim2.new(0.5, -175, 0.5, -175)
 mainFrame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
 mainFrame.BorderSizePixel = 2
-mainFrame.BorderColor3 = Color3.new(0, 0.7, 0)
+mainFrame.BorderColor3 = Color3.new(0.7, 0, 0)
 mainFrame.Parent = screenGui
 
 
@@ -31,8 +31,8 @@ mainFrame.Draggable = true
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 0, 40)
 title.Position = UDim2.new(0, 0, 0, 0)
-title.BackgroundColor3 = Color3.new(0, 0.5, 0)
-title.Text = "🔥 Fireball Training Hub"
+title.BackgroundColor3 = Color3.new(0.5, 0, 0)
+title.Text = "Fireball Training"
 title.TextColor3 = Color3.new(1,1,1)
 title.TextScaled = true
 title.Font = Enum.Font.GothamBold
@@ -70,7 +70,7 @@ for scriptName, _ in pairs(toggles) do
     btn.MouseButton1Click:Connect(function()
         toggles[scriptName] = not toggles[scriptName]
         btn.Text = scriptName .. " [" .. (toggles[scriptName] and "ATIVO ✅" or "INATIVO ❌") .. "]"
-        btn.BackgroundColor3 = toggles[scriptName] and Color3.new(0, 0.7, 0) or Color3.new(0.3, 0.3, 0.3)
+        btn.BackgroundColor3 = toggles[scriptName] and Color3.new(0.7, 0, 0) or Color3.new(0.3, 0.3, 0.3)
     end)
     yPos = yPos + 55
 end
@@ -80,7 +80,7 @@ local claimBtn = Instance.new("TextButton")
 claimBtn.Name = "ClaimAllDaily"
 claimBtn.Size = UDim2.new(0.9, 0, 0, 45)
 claimBtn.Position = UDim2.new(0.05, 0, 0, yPos)
-claimBtn.BackgroundColor3 = Color3.new(0.2, 0.7, 0.2)
+claimBtn.BackgroundColor3 = Color3.new(0.7, 0.2, 0.2)
 claimBtn.Text = "Claim All Daily Rewards (21/21) 🎁"
 claimBtn.TextColor3 = Color3.new(1,1,1)
 claimBtn.TextScaled = true
@@ -100,10 +100,10 @@ claimBtn.MouseButton1Click:Connect(function()
         end
         
         claimBtn.Text = "Claimed All! ✅"
-        claimBtn.BackgroundColor3 = Color3.new(0, 0.8, 0)
+        claimBtn.BackgroundColor3 = Color3.new(0.8, 0, 0)
         task.wait(0.2)
         claimBtn.Text = "Claim All Daily Rewards (21/21) 🎁"
-        claimBtn.BackgroundColor3 = Color3.new(0.2, 0.7, 0.2)
+        claimBtn.BackgroundColor3 = Color3.new(0.7, 0.2, 0.2)
     end)
 end)
 
