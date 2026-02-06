@@ -105,7 +105,7 @@ spawn(function()
             pcall(function()
                 local args = {
                     "Power",
-                    10000000000  
+                    99999999999  
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AddWheelSpinValue"):FireServer(unpack(args))
             end)
