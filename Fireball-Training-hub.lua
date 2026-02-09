@@ -1,12 +1,74 @@
---[[
- .____                  ________ ___.    _____                           __                
- |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
- |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
- |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
- |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
-         \/          \/         \/    \/                \/     \/     \/                   
-          \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-]]--
+local Window = Rayfield:CreateWindow({
+   Name = "Fireball Training Hub",
+   LoadingTitle = "Rayfield Interface Suite",
+   LoadingSubtitle = "by Sirius",
+   KeySystem = true,
+   KeySettings = {
+      Title = "Fireball Training Hub",
+      Subtitle = "Key System",
+      Note = "67",
+      FileName = "FireballKey",
+      SaveKey = false,
+      GrabKeyFromSite = false,
+      Key = {"feldlena"}
+   },
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil,
+      FileName = "FireballHub"
+   }
+})
 
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v55,v56) local v57={};for v71=1, #v55 do v6(v57,v0(v4(v1(v2(v55,v71,v71 + 1 )),v1(v2(v56,1 + (v71% #v56) ,1 + (v71% #v56) + 1 )))%256 ));end return v5(v57);end local v8=game:GetService(v7("\225\207\218\60\227\169\212","\126\177\163\187\69\134\219\167"));local v9=v8.LocalPlayer;local v10=v9:WaitForChild(v7("\19\193\43\220\249\49\234\63\204","\156\67\173\74\165"));local v11={[v7("\29\185\79\31\178\47\82\49\247\122\6\181\40\85","\38\84\215\41\118\220\70")]=false,[v7("\127\38\98\53\251\68\86\18\29\233\85\4","\158\48\118\66\114")]=false,[v7("\179\113\80\20\124\170\232\191","\155\203\68\112\86\19\197")]=false,[v7("\114\207\55\245\78\56\196\237\82\210\118\223\76\113\230\243\67\207","\152\38\189\86\156\32\24\133")]=false};local v12=Instance.new(v7("\207\84\181\67\249\89\128\83\245","\38\156\55\199"));v12.Name=v7("\137\104\104\39\21\117\232\78","\35\200\29\28\72\115\20\154");v12.Parent=v10;v12.ResetOnSpawn=false;local v16=Instance.new(v7("\63\173\208\210\136","\84\121\223\177\191\237\76"));v16.Size=UDim2.new(0,350,0,335 + 15 );v16.Position=UDim2.new(0.5, -175,0.5 + 0 , -175);v16.BackgroundColor3=Color3.new(1474.1 -(1329 + 145) ,971.1 -(140 + 831) ,0.1);v16.BorderSizePixel=2;v16.BorderColor3=Color3.new(1850.7 -(1409 + 441) ,718 -(15 + 703) ,0);v16.Parent=v12;v16.Active=true;v16.Draggable=true;local v25=Instance.new(v7("\143\83\209\180\22\81\50\196\183","\161\219\54\169\192\90\48\80"));v25.Size=UDim2.new(1,0 + 0 ,438 -(262 + 176) ,40);v25.Position=UDim2.new(1721 -(345 + 1376) ,0,688 -(198 + 490) ,0);v25.BackgroundColor3=Color3.new(0.5,0 -0 ,0 -0 );v25.Text=v7("\111\75\18\32\75\67\12\41\9\118\18\36\64\76\9\43\78","\69\41\34\96");v25.TextColor3=Color3.new(1,1207 -(696 + 510) ,1 -0 );v25.TextScaled=true;v25.Font=Enum.Font.GothamBold;v25.Parent=v16;local v35=Instance.new(v7("\136\198\207\30\32\62\168\215\216\4","\75\220\163\183\106\98"));v35.Size=UDim2.new(1262 -(1091 + 171) ,5 + 25 ,0,94 -64 );v35.Position=UDim2.new(1, -35,0,5);v35.BackgroundColor3=Color3.new(0.5 -0 ,374 -(123 + 251) ,0 -0 );v35.Text="X";v35.TextColor3=Color3.new(1,1,699 -(208 + 490) );v35.TextScaled=true;v35.Font=Enum.Font.GothamBold;v35.Parent=v16;v35.MouseButton1Click:Connect(function() v12:Destroy();end);local v44=6 + 54 ;for v58,v59 in pairs(v11) do local v60=Instance.new(v7("\54\191\147\35\251\23\174\159\56\215","\185\98\218\235\87"));v60.Name=v58;v60.Size=UDim2.new(0.9 + 0 ,836 -(660 + 176) ,0 + 0 ,247 -(14 + 188) );v60.Position=UDim2.new(0.05,675 -(534 + 141) ,0 + 0 ,v44);v60.BackgroundColor3=Color3.new(0.3 + 0 ,0.3 + 0 ,0.3 -0 );v60.Text=v58   .. " [INATIVO âŒ]" ;v60.TextColor3=Color3.new(1 -0 ,2 -1 ,1 + 0 );v60.TextScaled=true;v60.Font=Enum.Font.Gotham;v60.Parent=v16;v60.MouseButton1Click:Connect(function() local v72=0 + 0 ;while true do if ((396 -(115 + 281))==v72) then v11[v58]= not v11[v58];v60.Text=v58   .. v7("\139\7","\202\171\92\71\134\190")   .. ((v11[v58] and "ATIVO âœ…") or "INATIVO âŒ")   .. "]" ;v72=2 -1 ;end if ((1 + 0)==v72) then v60.BackgroundColor3=(v11[v58] and Color3.new(0.7 -0 ,0 -0 ,0)) or Color3.new(867.3 -(550 + 317) ,0.3 -0 ,0.3 -0 ) ;break;end end end);v44=v44 + 55 ;end local v45=Instance.new(v7("\29\196\52\156\11\212\56\156\38\207","\232\73\161\76"));v45.Name=v7("\152\213\67\84\19\154\213\78\121\31\178\213\91","\126\219\185\34\61");v45.Size=UDim2.new(0.9 -0 ,0,285 -(134 + 151) ,45);v45.Position=UDim2.new(0.05,1665 -(970 + 695) ,0 -0 ,v44);v45.BackgroundColor3=Color3.new(0.7,1990.2 -(582 + 1408) ,0.2 -0 );v45.Text="Claim All Daily Rewards (21/21) ðŸŽ";v45.TextColor3=Color3.new(1,1,1 -0 );v45.TextScaled=true;v45.Font=Enum.Font.GothamBold;v45.Parent=v16;v45.MouseButton1Click:Connect(function() pcall(function() local v73=0;while true do if (v73==(0 -0)) then v45.Text=v7("\47\194\95\123\115\126\253\224\66\128\16\50\54\37\162\168\94\159\23","\135\108\174\62\18\30\23\147");v45.BackgroundColor3=Color3.new(1824.6 -(1195 + 629) ,0.6,0 -0 );v73=242 -(187 + 54) ;end if (v73==(783 -(162 + 618))) then v45.Text="Claim All Daily Rewards (21/21) ðŸŽ";v45.BackgroundColor3=Color3.new(0.7 + 0 ,0.2,0.2);break;end if (v73==(1 + 0)) then for v90=1,44 -23  do local v91=0 -0 ;local v92;while true do if (v91==(0 + 0)) then v92=0;while true do if (v92==(1636 -(1373 + 263))) then game:GetService(v7("\132\236\58\199\17\173\50\211\179\237\25\223\23\188\50\192\179","\167\214\137\74\171\120\206\83")):WaitForChild(v7("\175\241\59\81\225\130\157\245\60\73\235","\199\235\144\82\61\152")):WaitForChild(v7("\36\26\184\34\10\50\184\34\11\15","\75\103\118\217")):FireServer();v45.Text=string.format(v7("\228\88\113\29\180\23\201\83\62\90\247\94\143\17\116\91\235\79\142","\126\167\52\16\116\217"),v90);v92=1001 -(451 + 549) ;end if ((1 + 0)==v92) then task.wait(0.05 -0 );break;end end break;end end end v45.Text="Claimed All! âœ…";v73=2 -0 ;end if (v73==(1386 -(746 + 638))) then v45.BackgroundColor3=Color3.new(0.8 + 0 ,0 -0 ,341 -(218 + 123) );task.wait(1581.2 -(1535 + 46) );v73=3;end end end);end);spawn(function() while v12.Parent do if v11[v7("\225\32\38\137\186\16\232\205\110\19\144\189\23\239","\156\168\78\64\224\212\121")] then pcall(function() local v83=0 + 0 ;local v84;while true do if (0==v83) then v84={v7("\52\254\172\192\20","\174\103\142\197"),1 + 0 };game:GetService(v7("\100\45\79\52\44\93\249\66\45\91\11\49\81\234\87\47\90","\152\54\72\63\88\69\62")):WaitForChild(v7("\230\193\227\83\192\193\253","\60\180\164\142")):WaitForChild(v7("\121\90\1\30\47\232\23\84\109\21\32\41\219\19\84\75\0","\114\56\62\101\73\71\141")):FireServer(unpack(v84));break;end end end);end if v11[v7("\151\217\155\227\189\253\155\244\183\254\222\214","\164\216\137\187")] then pcall(function() local v85=0 -0 ;local v86;while true do if (v85==(1467 -(899 + 568))) then v86={v7("\226\233\38\183\180","\107\178\134\81\210\198\158"),10000000000};game:GetService(v7("\10\11\146\202\163\59\15\150\195\174\11\26\141\212\171\63\11","\202\88\110\226\166")):WaitForChild(v7("\241\10\143\248\222\198\28","\170\163\111\226\151")):WaitForChild(v7("\48\52\182\15\70\50\44\29\3\162\49\64\1\40\29\37\183","\73\113\80\210\88\46\87")):FireServer(unpack(v86));break;end end end);end if v11[v7("\153\121\141\48\232\142\63\217","\135\225\76\173\114")] then pcall(function() local v87=603 -(268 + 335) ;local v88;while true do if (v87==0) then v88={v7("\2\184\248\128\163\170\162\8","\199\122\141\216\208\204\221"),30};game:GetService(v7("\159\216\0\252\113\245\172\201\21\244\75\226\162\207\17\247\125","\150\205\189\112\144\24")):WaitForChild(v7("\23\129\178\67\16\141\2","\112\69\228\223\44\100\232\113")):WaitForChild(v7("\245\27\3\228\190\121\131\216\44\23\218\184\74\135\216\10\2","\230\180\127\103\179\214\28")):FireServer(unpack(v88));break;end end end);end if v11[v7("\184\23\94\79\234\1\193\153\17\80\6\199\77\233\143\14\90\84","\128\236\101\63\38\132\33")] then pcall(function() local v89=v8.LocalPlayer.Character;if (v89 and v89:FindFirstChild(v7("\152\187\16\77\184","\175\204\201\113\36\214\139")) and v89.Train:FindFirstChild(v7("\98\218\48\210\16","\100\39\172\85\188"))) then v89.Train.Event:FireServer();end end);end task.wait(1e-24 + 0 );end end);print("ðŸ”¥ Fireball Training Hub");
+local Tab = Window:CreateTab("Autofarm", nil)
+
+local Section = Tab:CreateSection("Features")
+
+local toggles = {
+   ["Infinite Spins"] = false,
+   ["OP Get Power"] = false,
+   ["Get Daily and 5x Boost"] = false
+}
+
+for name, _ in pairs(toggles) do
+   Tab:CreateToggle({
+      Name = name,
+      CurrentValue = false,
+      Flag = name,
+      Callback = function(Value)
+         toggles[name] = Value
+      end,
+   })
+end
+
+print("🔥 Fireball Training Hub")
+
+spawn(function()
+   while task.wait(0.000000000000000000000001) do
+      if toggles["Infinite Spins"] then
+         pcall(function()
+            local args = {"Spins", 10}
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AddWheelSpinValue"):FireServer(unpack(args))
+         end)
+      end
+      
+      if toggles["OP Get Power"] then
+         pcall(function()
+            local args = {"Power", 10000000000}
+            game:GetService("ReplicatedStorage").Remotes["AddWheelSpinValue"]:FireServer(unpack(args))
+         end)
+      end
+      
+      if toggles["Get Daily and 5x Boost"] then
+         pcall(function()
+            local args = {"x5 Power", 30}
+            game:GetService("ReplicatedStorage").Remotes["AddWheelSpinValue"]:FireServer(unpack(args))
+         end)
+         
+         pcall(function()
+            game:GetService("ReplicatedStorage").DailyEvents.ClaimDaily:FireServer()
+         end)
+      end
+   end
+end)
